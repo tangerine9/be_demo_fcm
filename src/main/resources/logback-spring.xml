@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 콘솔 로그 설정 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} %highlight(%-5level) %magenta([%thread]) %cyan(%logger{36}) - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+
+    <!-- Spring Framework 웹 로깅 제한 -->
+    <logger name="org.springframework.web" level="WARN" />
+    <logger name="org.springframework.web.servlet.mvc.method.annotation" level="WARN" />
+    <logger name="org.apache.catalina" level="WARN" />
+    <logger name="org.apache.tomcat" level="WARN" />
+    
+    <!-- FCM 관련 로그 설정 -->
+    <logger name="com.tangerine9.demofcm.service.FCMService" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <!-- 컨트롤러 로그 설정 -->
+    <logger name="com.tangerine9.demofcm.controller" level="INFO" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <!-- 예외 처리 로그 설정 -->
+    <logger name="com.tangerine9.demofcm.exception" level="ERROR" additivity="false">
+        <appender-ref ref="CONSOLE" />
+    </logger>
+
+    <!-- 개발 환경 설정 -->
+    <springProfile name="dev">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+
+    <!-- 운영 환경 설정 -->
+    <springProfile name="prod">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+        </root>
+    </springProfile>
+</configuration> 
