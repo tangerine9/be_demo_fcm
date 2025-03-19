@@ -271,3 +271,5 @@ gradle-app.setting
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
+# Firebase credentials
+src/main/resources/firebase-service-account.json

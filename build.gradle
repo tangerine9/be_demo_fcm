@@ -46,6 +46,7 @@ dependencies {
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     // build.gradle.kts의 dependencies 블록에 추가
     implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("com.google.firebase:firebase-admin:9.2.0")
 }
 
 dependencyManagement {
@@ -58,6 +59,7 @@ dependencyManagement {
 kotlin {
     compilerOptions {
         freeCompilerArgs.addAll '-Xjsr305=strict'
+        jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
     }
 }
 
