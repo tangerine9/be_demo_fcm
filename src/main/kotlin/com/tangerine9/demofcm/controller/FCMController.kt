@@ -15,14 +15,14 @@ class FCMController(private val fcmService: FCMService) {
     private val logger = LoggerFactory.getLogger(FCMController::class.java)
 
     @PostMapping("/send/token")
-    fun sendNotificationToToken(@Valid @RequestBody request: TokenRequest) = 
-        fcmService.sendMessageToToken(request.token, request.title, request.body)
-
+    fun sendNotificationToToken(@Valid @RequestBody request: TokenRequest) =
+        fcmService.sendMessageToToken(request.token, request.title, request.body, request.data)
+    
     @PostMapping("/send/topic")
     fun sendNotificationToTopic(@Valid @RequestBody request: TopicRequest) = 
-        fcmService.sendMessageToTopic(request.topic, request.title, request.body)
+        fcmService.sendMessageToTopic(request.topic, request.title, request.body, request.data)
 
     @PostMapping("/send/all")
     fun sendNotificationToAll(@Valid @RequestBody request: FCMRequest) = 
-        fcmService.sendMessageToAll(request.title, request.body)
+        fcmService.sendMessageToAll(request.title, request.body, request.data)
 }
