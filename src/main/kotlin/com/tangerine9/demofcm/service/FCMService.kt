@@ -55,12 +55,13 @@ class FCMService {
             .build()
         
         val messageBuilder = Message.builder()
-            .setNotification(notification)
+            // .setNotification(notification)
         
         // data 필드가 비어있지 않은 경우에만 추가
         if (data.isNotEmpty()) {
             messageBuilder.putAllData(data)
         }
+
         
         val message = configureTarget(messageBuilder).build()
         return FirebaseMessaging.getInstance().send(message)
